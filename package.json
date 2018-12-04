@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/rxseven/playground-socket.io/issues"
   },
-  "homepage": "https://github.com/rxseven/playground-socket.io#readme"
+  "homepage": "https://github.com/rxseven/playground-socket.io#readme",
+  "devDependencies": {
+    "prettier": "1.15.3"
+  }
 }
