@@ -3,5 +3,10 @@
   "files.associations": {
     ".eslintrc": "json",
     ".prettierrc": "json"
-  }
+  },
+
+  // ESLint
+  // Use ESLint for JavaScript linting rather than built-in JavaScript and
+  // TypeScript validation.
+  "javascript.validate.enable": false,
 }
