@@ -17,6 +17,7 @@
     "url": "https://github.com/rxseven/playground-socket.io/issues"
   },
   "scripts": {
+    "format": "prettier-eslint --write **/*.{js,json}",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js"
   },
