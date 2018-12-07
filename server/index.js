@@ -1,6 +1,7 @@
 // Module dependencies
 const bodyParser = require('body-parser');
 const config = require('config');
+const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -15,6 +16,9 @@ const app = express();
 if (config.util.getEnv('NODE_ENV') !== 'test') {
   app.use(morgan('dev'));
 }
+
+// CORS
+app.use(cors());
 
 // Body parsing
 app.use(bodyParser.json());
