@@ -6,6 +6,7 @@ const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
 const path = require('path');
+const socketIO = require('socket.io');
 
 // Public path
 const publicPath = path.join(__dirname, '../public');
@@ -29,6 +30,20 @@ app.use(express.static(publicPath));
 
 // Create an HTTP server object
 const server = http.createServer(app);
+
+// Initialize a new instance of Socket.io by passing the HTTP server object
+const io = socketIO(server);
+
+// Listen on the connection event for incoming sockets
+io.on('connection', (socket) => {
+  // Socket connected
+  console.log('Socket.io - New socket connected');
+
+  // Socket disconnected
+  socket.on('disconnect', () => {
+    console.log('Socket.io - Socket disconnected');
+  });
+});
 
 // Bind and listen for connections on the specified host and port
 server.listen(process.env.PORT || 5000, () => {
