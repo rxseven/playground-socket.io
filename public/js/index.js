@@ -2,14 +2,14 @@
 // at /socket.io/socket.io.js.
 
 // Initialize Socket.io connection
-const socket = io('http://localhost:5000');
+var socket = io('http://localhost:5000');
 
 // Connected to the server
-socket.on('connect', () => {
+socket.on('connect', function() {
   console.log('Socket.io - Connected to the server');
 });
 
 // Disconnected from the server
-socket.on('disconnect', () => {
+socket.on('disconnect', function() {
   console.log('Socket.io - Disconnected from the server');
 });
