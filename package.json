@@ -18,8 +18,8 @@
   },
   "scripts": {
     "format": "prettier-eslint --write **/*.{js,json}",
-    "lint": "eslint **/*.js",
-    "lint:fix": "eslint --fix **/*.js"
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint --fix \"**/*.js\""
   },
   "homepage": "https://github.com/rxseven/playground-socket.io#readme",
   "dependencies": {
