@@ -1,4 +1,5 @@
 // Module dependencies
+const bodyParser = require('body-parser');
 const config = require('config');
 const express = require('express');
 const morgan = require('morgan');
@@ -14,6 +15,9 @@ const app = express();
 if (config.util.getEnv('NODE_ENV') !== 'test') {
   app.use(morgan('dev'));
 }
+
+// Body parsing
+app.use(bodyParser.json());
 
 // Serve static files
 app.use(express.static(publicPath));
