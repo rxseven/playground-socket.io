@@ -22,6 +22,9 @@
     "lint:fix": "eslint --fix **/*.js"
   },
   "homepage": "https://github.com/rxseven/playground-socket.io#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
   "devDependencies": {
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
