@@ -13,9 +13,6 @@ const publicPath = path.join(__dirname, '../public');
 // Initialize app to be a function handler
 const app = express();
 
-// Create an HTTP server object
-const server = http.createServer(app);
-
 // Logger
 if (config.util.getEnv('NODE_ENV') !== 'test') {
   app.use(morgan('dev'));
@@ -29,6 +26,9 @@ app.use(bodyParser.json());
 
 // Serve static files
 app.use(express.static(publicPath));
+
+// Create an HTTP server object
+const server = http.createServer(app);
 
 // Bind and listen for connections on the specified host and port
 server.listen(process.env.PORT || 5000, () => {
