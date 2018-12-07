@@ -19,7 +19,8 @@
   "scripts": {
     "format": "prettier-eslint --write \"**/*.{js,json}\"",
     "lint": "eslint \"**/*.js\"",
-    "lint:fix": "eslint --fix \"**/*.js\""
+    "lint:fix": "eslint --fix \"**/*.js\"",
+    "start": "node server/index.js"
   },
   "homepage": "https://github.com/rxseven/playground-socket.io#readme",
   "dependencies": {
