@@ -21,7 +21,8 @@
     "lint": "eslint \"**/*.js\"",
     "lint:fix": "eslint --fix \"**/*.js\"",
     "start": "node server/index.js",
-    "start:watch": "nodemon server/index.js"
+    "start:watch": "nodemon server/index.js",
+    "test": "cross-env NODE_ENV=test mocha server/**/*.test.js"
   },
   "homepage": "https://github.com/rxseven/playground-socket.io#readme",
   "dependencies": {
