@@ -48,8 +48,11 @@ io.on('connection', (socket) => {
   socket.broadcast.emit('newMessage', generageMessage('Admin', 'New user joined'));
 
   // Listen for new message
-  socket.on('createMessage', (message) => {
+  socket.on('createMessage', (message, callback) => {
     console.log('createMessage:', message);
+
+    // Execute a callback
+    callback('This data is from the server');
   });
 
   // Socket disconnected
