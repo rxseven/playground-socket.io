@@ -8,6 +8,8 @@ const morgan = require('morgan');
 const path = require('path');
 const socketIO = require('socket.io');
 
+const { generageMessage } = require('./utilities/message');
+
 // Public path
 const publicPath = path.join(__dirname, '../public');
 
@@ -38,6 +40,9 @@ const io = socketIO(server);
 io.on('connection', (socket) => {
   // Socket connected
   console.log('Socket.io - New socket connected');
+
+  // Send greeting message to the individual user
+  socket.emit('newMessage', generageMessage('Admin', 'Welcome to the Chat app'));
 
   // Socket disconnected
   socket.on('disconnect', () => {
