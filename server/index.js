@@ -47,6 +47,11 @@ io.on('connection', (socket) => {
   // Notify the chat room that new user joined
   socket.broadcast.emit('newMessage', generageMessage('Admin', 'New user joined'));
 
+  // Listen for new message
+  socket.on('createMessage', (message) => {
+    console.log('createMessage:', message);
+  });
+
   // Socket disconnected
   socket.on('disconnect', () => {
     console.log('Socket.io - Socket disconnected');
