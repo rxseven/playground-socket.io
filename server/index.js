@@ -59,7 +59,10 @@ io.on('connection', (socket) => {
   });
 
   // Listen for new location message
-  socket.on('createLocation', (coords) => {
+  socket.on('createLocation', (coords, callback) => {
+    // Execute a callback
+    callback();
+
     io.emit('newLocation', generateLocation('Admin', coords.latitude, coords.longitude));
   });
 
