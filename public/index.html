@@ -6,14 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Chat</title>
   </head>
-  <body>
-    <p>Welcome to the Chat app</p>
-    <ul id="message-list"></ul>
-    <form id="message-form">
-      <input name="message-input" id="message-input" placeholder="Message" type="text">
-      <button type="submit">Send</button>
-      <button id="message-location" type="button">Send location</button>
-    </form>
+  <body class="chat">
+    <div class="chat-sidebar">
+      <h3>People</h3>
+      <div id="users"></div>
+    </div>
+
+    <main class="chat-main">
+      <ul class="chat-messages" id="message-list"></ul>
+
+      <div class="chat-footer">
+        <form id="message-form">
+          <input name="message-input" id="message-input" placeholder="Message" type="text">
+          <button type="submit">Send</button>
+        </form>
+        <button id="message-location" type="button">Send location</button>
+      </div>
+    </main>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/vendor/jquery.min.js"></script>
     <script src="/js/index.js"></script>
