@@ -5,5 +5,12 @@ const generageMessage = (from, text) => ({
   text
 });
 
+// Generate location link
+const generateLocation = (from, latitude, longitude) => ({
+  createdAt: new Date().getTime(),
+  from,
+  url: `https://www.google.com/maps?q=${latitude},${longitude}`
+});
+
 // Module exports
-module.exports = { generageMessage };
+module.exports = { generageMessage, generateLocation };
