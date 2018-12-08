@@ -26,6 +26,11 @@ socket.on('newMessage', function(message) {
   $('#message-list').append(li);
 });
 
+// Listen for new location message
+socket.on('newLocation', function(message) {
+  console.log('newLocation:', message);
+});
+
 // Form
 $('#message-form').on('submit', function(event) {
   // Prevent the form from being submitted
