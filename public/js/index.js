@@ -60,11 +60,15 @@ $('#message-form').on('submit', function(event) {
 });
 
 // Send current location
-$('#message-location').on('click', function() {
+var $locationButton = $('#message-location');
+$locationButton.on('click', function() {
   // Check Geolocation support
   if (!navigator.geolocation) {
     return alert('Geolocation not supported by your browser.');
   }
+
+  // Disable the button while processing
+  $locationButton.attr('disabled', 'disabled').text('Sending location...');
 
   // Get current location
   navigator.geolocation.getCurrentPosition(function(position) {
