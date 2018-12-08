@@ -16,11 +16,14 @@ socket.on('disconnect', function() {
 
 // Listen for new message
 socket.on('newMessage', function(message) {
+  // Variables
+  var formattedTime = moment(message.createdAt).format('h:mm a');
+
   // Create a list element
   var li = $('<li></li>');
 
   // Set the content of the list element to the specified message
-  li.text(message.from + ': ' + message.text);
+  li.text(message.from + ' ' + formattedTime + ': ' + message.text);
 
   // Insert content to the end of the list element
   $('#message-list').append(li);
