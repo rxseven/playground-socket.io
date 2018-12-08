@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
     console.log('createMessage:', message);
 
     // Execute a callback
-    callback('This data is from the server');
+    callback();
 
     // Send message to every single connection
     io.emit('newMessage', generageMessage(message.from, message.text));

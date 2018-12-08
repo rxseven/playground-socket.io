@@ -46,12 +46,16 @@ $('#message-form').on('submit', function(event) {
   // Prevent the form from being submitted
   event.preventDefault();
 
+  // Variables
+  var $messageInput = $('#message-input');
+
   // Create new message
   socket.emit('createMessage', {
     from: 'User',
-    text: $('#message-input').val()
+    text: $messageInput.val()
   }, function(data) {
-    console.log('Acknowledgement -', data);
+    // Reset the input
+    $messageInput.val('');
   });
 });
 
