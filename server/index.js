@@ -53,6 +53,9 @@ io.on('connection', (socket) => {
 
     // Execute a callback
     callback('This data is from the server');
+
+    // Send message to every single connection
+    io.emit('newMessage', generageMessage(message.from, message.text));
   });
 
   // Socket disconnected
