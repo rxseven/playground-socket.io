@@ -81,6 +81,9 @@ $locationButton.on('click', function() {
       $locationButton.removeAttr('disabled').text('Send location');
     });
   }, function() {
+    // Enable the button when unable to fetch location
+    $locationButton.removeAttr('disabled').text('Send location');
+
     alert('Unable to fetch location.');
   })
 });
