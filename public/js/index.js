@@ -31,12 +31,15 @@ socket.on('newMessage', function(message) {
 
 // Listen for new location message
 socket.on('newLocation', function(message) {
+  // Variables
+  var formattedTime = moment(message.createdAt).format('h:mm a');
+
   // Create a list element
   var li = $('<li></li>');
   var a = $('<a target="_blank">My current location</a>');
 
   // Set the content of the list and link element to the specified message
-  li.text(message.from + ': ');
+  li.text(message.from + ' ' + formattedTime + ': ');
   a.attr('href', message.url);
   li.append(a);
 
