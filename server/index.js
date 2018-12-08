@@ -63,6 +63,7 @@ io.on('connection', (socket) => {
     // Execute a callback
     callback();
 
+    // Send location message to every single connection
     io.emit('newLocation', generateLocation('Admin', coords.latitude, coords.longitude));
   });
 
