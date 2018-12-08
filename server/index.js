@@ -44,6 +44,9 @@ io.on('connection', (socket) => {
   // Send greeting message to the individual user
   socket.emit('newMessage', generageMessage('Admin', 'Welcome to the Chat app'));
 
+  // Notify the chat room that new user joined
+  socket.broadcast.emit('newMessage', generageMessage('Admin', 'New user joined'));
+
   // Socket disconnected
   socket.on('disconnect', () => {
     console.log('Socket.io - Socket disconnected');
