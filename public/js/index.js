@@ -18,4 +18,12 @@ socket.on('disconnect', function() {
 $('#message-form').on('submit', function(event) {
   // Prevent the form from being submitted
   event.preventDefault();
+
+  // Create new message
+  socket.emit('createMessage', {
+    from: 'User',
+    text: $('#message-input').val()
+  }, function(data) {
+    console.log('Acknowledgement -', data);
+  });
 });
