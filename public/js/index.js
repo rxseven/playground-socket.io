@@ -13,3 +13,9 @@ socket.on('connect', function() {
 socket.on('disconnect', function() {
   console.log('Socket.io - Disconnected from the server');
 });
+
+// Form
+$('#message-form').on('submit', function(event) {
+  // Prevent the form from being submitted
+  event.preventDefault();
+});
