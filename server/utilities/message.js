@@ -10,7 +10,7 @@ const generageMessage = (from, text) => ({
 
 // Generate location link
 const generateLocation = (from, latitude, longitude) => ({
-  createdAt: new Date().getTime(),
+  createdAt: moment().valueOf(),
   from,
   url: `https://www.google.com/maps?q=${latitude},${longitude}`
 });
