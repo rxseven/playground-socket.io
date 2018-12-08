@@ -58,6 +58,11 @@ io.on('connection', (socket) => {
     io.emit('newMessage', generageMessage(message.from, message.text));
   });
 
+  // Listen for new location message
+  socket.on('createLocation', (coords) => {
+    console.log('createLocation:', coords);
+  });
+
   // Socket disconnected
   socket.on('disconnect', () => {
     console.log('Socket.io - Socket disconnected');
