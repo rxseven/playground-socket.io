@@ -28,7 +28,17 @@ socket.on('newMessage', function(message) {
 
 // Listen for new location message
 socket.on('newLocation', function(message) {
-  console.log('newLocation:', message);
+  // Create a list element
+  var li = $('<li></li>');
+  var a = $('<a target="_blank">My current location</a>');
+
+  // Set the content of the list and link element to the specified message.
+  li.text(message.from + ': ');
+  a.attr('href', message.url);
+  li.append(a);
+
+  // Insert content to the end of the list element.
+  $('#message-list').append(li);
 });
 
 // Form
