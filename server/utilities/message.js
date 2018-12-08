@@ -1,6 +1,9 @@
+// Module dependencies
+const moment = require('moment');
+
 // Generage message
 const generageMessage = (from, text) => ({
-  createdAt: new Date().getTime(),
+  createdAt: moment().valueOf(),
   from,
   text
 });
