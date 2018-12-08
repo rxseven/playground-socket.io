@@ -76,7 +76,10 @@ $locationButton.on('click', function() {
     socket.emit('createLocation', {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
-    })
+    }, function() {
+      // Enable the button once the location message has been sent successfully
+      $locationButton.removeAttr('disabled').text('Send location');
+    });
   }, function() {
     alert('Unable to fetch location.');
   })
