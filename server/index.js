@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const path = require('path');
 const socketIO = require('socket.io');
 
-const { generageMessage } = require('./utilities/message');
+const { generageMessage, generateLocation } = require('./utilities/message');
 
 // Public path
 const publicPath = path.join(__dirname, '../public');
@@ -60,7 +60,7 @@ io.on('connection', (socket) => {
 
   // Listen for new location message
   socket.on('createLocation', (coords) => {
-    console.log('createLocation:', coords);
+    io.emit('newLocation', generateLocation('Admin', coords.latitude, coords.longitude));
   });
 
   // Socket disconnected
