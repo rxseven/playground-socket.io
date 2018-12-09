@@ -35,18 +35,17 @@ socket.on('newMessage', function(message) {
 socket.on('newLocation', function(message) {
   // Variables
   var formattedTime = moment(message.createdAt).format('h:mm a');
+  var template = $('#template-location').html();
 
-  // Create a list element
-  var $li = $('<li></li>');
-  var $a = $('<a target="_blank">My current location</a>');
-
-  // Set the content of the list and link element to the specified message
-  $li.text(message.from + ' ' + formattedTime + ': ');
-  $a.attr('href', message.url);
-  $li.append($a);
+  // Render elements
+  var html = Mustache.render(template, {
+    createdAt: formattedTime,
+    from: message.from,
+    url: message.url
+  });
 
   // Insert content to the end of the list element
-  $('#message-list').append($li);
+  $('#message-list').append(html);
 });
 
 // Form
