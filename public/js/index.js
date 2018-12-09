@@ -18,15 +18,17 @@ socket.on('disconnect', function() {
 socket.on('newMessage', function(message) {
   // Variables
   var formattedTime = moment(message.createdAt).format('h:mm a');
+  var template = $('#template-message').html();
 
-  // Create a list element
-  var $li = $('<li></li>');
-
-  // Set the content of the list element to the specified message
-  $li.text(message.from + ' ' + formattedTime + ': ' + message.text);
+  // Render elements
+  var html = Mustache.render(template, {
+    createdAt: formattedTime,
+    from: message.from,
+    text: message.text
+  });
 
   // Insert content to the end of the list element
-  $('#message-list').append($li);
+  $('#message-list').append(html);
 });
 
 // Listen for new location message
