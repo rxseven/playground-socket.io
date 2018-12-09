@@ -44,6 +44,20 @@
       </li>
     </script>
 
+    <script id="template-location" type="text/template">
+      <li class="message">
+        <div class="message-title">
+          <h4>{{from}}</h4>
+          <span>{{createdAt}}</span>
+        </div>
+        <div class="message-body">
+          <p>
+            <a href="{{url}}" target="_blank">My current location</a>
+          </p>
+        </div>
+      </li>
+    </script>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/vendor/jquery.min.js"></script>
     <script src="/js/vendor/moment.min.js"></script>
