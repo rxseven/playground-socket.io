@@ -28,6 +28,21 @@ function scrollBottom() {
 // Connected to the server
 socket.on('connect', function() {
   console.log('Socket.io - Connected to the server');
+
+  var params = jQuery.deparam(window.location.search);
+
+  // Join a chat room
+  socket.emit('join', params, function(error) {
+    if (error) {
+      // Show error message
+      alert(error);
+
+      // Redirect user to home screen
+      window.location.href = '/';
+    } else {
+
+    }
+  });
 });
 
 // Disconnected from the server
