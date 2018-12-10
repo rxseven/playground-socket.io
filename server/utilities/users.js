@@ -16,6 +16,11 @@ class Users {
     // Return new user
     return user;
   }
+
+  // Get user
+  getUser(id) {
+    return this.users.filter(user => user.id === id)[0];
+  }
 }
 
 // Module exports
