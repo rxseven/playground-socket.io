@@ -31,6 +31,20 @@ class Users {
     // Return user list
     return names;
   }
+
+  // Remove user
+  removeUser(id) {
+    // Variables
+    const user = this.getUser(id);
+
+    // Remove a user
+    if (user) {
+      this.users = this.users.filter(member => member.id !== id);
+    }
+
+    // Return user that was removed
+    return user;
+  }
 }
 
 // Module exports
