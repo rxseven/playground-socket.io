@@ -100,11 +100,20 @@ io.on('connection', (socket) => {
 
   // Listen for new location message
   socket.on('createLocation', (coords, callback) => {
+    // Variables
+    const user = users.getUser(socket.id);
+
+    // Validate user and text message
+    if (user) {
+      // Send location message to a specific chat room
+      io.to(user.room).emit(
+        'newLocation',
+        generateLocation(user.name, coords.latitude, coords.longitude)
+      );
+    }
+
     // Execute a callback
     callback();
-
-    // Send location message to every single connection
-    io.emit('newLocation', generateLocation('Admin', coords.latitude, coords.longitude));
   });
 
   // Socket disconnected
