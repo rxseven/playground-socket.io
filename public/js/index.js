@@ -70,6 +70,9 @@ socket.on('newLocation', function(message) {
 
   // Insert content to the end of the list element
   $('#message-list').append(html);
+
+  // Scroll message list to the bottom
+  scrollBottom();
 });
 
 // Form
