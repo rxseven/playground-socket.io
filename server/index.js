@@ -9,6 +9,8 @@ const path = require('path');
 const socketIO = require('socket.io');
 
 const { generageMessage, generateLocation } = require('./utilities/message');
+const { Users } = require('./utilities/users');
+const { isString } = require('./utilities/validation');
 
 // Public path
 const publicPath = path.join(__dirname, '../public');
@@ -36,16 +38,45 @@ const server = http.createServer(app);
 // Initialize a new instance of Socket.io by passing the HTTP server object
 const io = socketIO(server);
 
+// Initialize users instance
+const users = new Users();
+
 // Listen on the connection event for incoming sockets
 io.on('connection', (socket) => {
   // Socket connected
   console.log('Socket.io - New socket connected');
 
-  // Send greeting message to the individual user
-  socket.emit('newMessage', generageMessage('Admin', 'Welcome to the Chat app'));
+  // Listem for a new user
+  socket.on('join', (params, callback) => {
+    // Validate input params
+    if (!isString(params.name) || !isString(params.room)) {
+      // Return an error message
+      callback('Name and Room name are requried');
 
-  // Notify the chat room that new user joined
-  socket.broadcast.emit('newMessage', generageMessage('Admin', 'New user joined'));
+      // Stop the function execution
+      return;
+    }
+
+    // Subscribe the socket to a given chat room
+    socket.join(params.room);
+
+    // Remove the existing user from other chat room
+    users.removeUser(socket.id);
+
+    // Add new user
+    users.addUser(socket.id, params.name, params.room);
+
+    // Send greeting message to the individual user
+    socket.emit('newMessage', generageMessage('Admin', 'Welcome to the Chat app'));
+
+    // Notify the chat room that new user joined
+    socket.broadcast
+      .to(params.room)
+      .emit('newMessage', generageMessage('Admin', `${params.name} has joined.`));
+
+    // Return an acknowledgement
+    callback();
+  });
 
   // Listen for new message
   socket.on('createMessage', (message, callback) => {
