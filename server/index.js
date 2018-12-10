@@ -85,11 +85,17 @@ io.on('connection', (socket) => {
   socket.on('createMessage', (message, callback) => {
     console.log('createMessage:', message);
 
+    // Variables
+    const user = users.getUser(socket.id);
+
+    // Validate user and text message
+    if (user && isString(message.text)) {
+      // Send message to a specific chat room
+      io.to(user.room).emit('newMessage', generageMessage(user.name, message.text));
+    }
+
     // Execute a callback
     callback();
-
-    // Send message to every single connection
-    io.emit('newMessage', generageMessage(message.from, message.text));
   });
 
   // Listen for new location message
