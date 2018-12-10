@@ -100,7 +100,6 @@ $('#message-form').on('submit', function(event) {
 
   // Create new message
   socket.emit('createMessage', {
-    from: 'User',
     text: $messageInput.val()
   }, function(data) {
     // Reset the input
