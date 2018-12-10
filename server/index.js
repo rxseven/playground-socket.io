@@ -66,6 +66,9 @@ io.on('connection', (socket) => {
     // Add new user
     users.addUser(socket.id, params.name, params.room);
 
+    // Update users list
+    io.to(params.room).emit('updateUsers', users.getUserList(params.room));
+
     // Send greeting message to the individual user
     socket.emit('newMessage', generageMessage('Admin', 'Welcome to the Chat app'));
 
