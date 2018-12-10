@@ -124,6 +124,9 @@ io.on('connection', (socket) => {
     const user = users.removeUser(socket.id);
 
     if (user) {
+      // Update users list
+      io.to(user.room).emit('updateUsers', users.getUserList(user.room));
+
       // Notify the chat room that a user left
       io.to(user.room).emit('newMessage', generageMessage('Admin', `${user.name} has left.`));
     }
