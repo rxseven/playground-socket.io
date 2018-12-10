@@ -21,6 +21,16 @@ class Users {
   getUser(id) {
     return this.users.filter(user => user.id === id)[0];
   }
+
+  // Get user list
+  getUserList(room) {
+    // Variables
+    const users = this.users.filter(user => user.room === room);
+    const names = users.map(user => user.name);
+
+    // Return user list
+    return names;
+  }
 }
 
 // Module exports
