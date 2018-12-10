@@ -17,17 +17,37 @@
     "url": "https://github.com/rxseven/playground-socket.io/issues"
   },
   "scripts": {
-    "format": "prettier-eslint --write **/*.{js,json}",
-    "lint": "eslint **/*.js",
-    "lint:fix": "eslint --fix **/*.js"
+    "format": "prettier-eslint --write \"**/*.{js,json}\"",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint --fix \"**/*.js\"",
+    "start": "node server/index.js",
+    "start:watch": "nodemon server/index.js",
+    "test": "cross-env NODE_ENV=test mocha server/**/*.test.js",
+    "test:watch": "yarn test --watch"
   },
   "homepage": "https://github.com/rxseven/playground-socket.io#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "config": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "morgan": "^1.9.1",
+    "socket.io": "^2.2.0"
+  },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "expect": "^23.6.0",
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.7",
     "prettier": "1.15.3",
     "prettier-eslint": "^8.8.2",
     "prettier-eslint-cli": "^4.7.1"

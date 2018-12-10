@@ -1,7 +1,12 @@
 {
   "env": {
+    "mocha": true,
     "node": true
   },
   "extends": "airbnb-base",
-  "rules": {}
+  "plugins": ["mocha"],
+  "rules": {
+    "comma-dangle": "off",
+    "no-console": "off"
+  }
 }
