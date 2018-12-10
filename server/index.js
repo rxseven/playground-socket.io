@@ -119,6 +119,14 @@ io.on('connection', (socket) => {
   // Socket disconnected
   socket.on('disconnect', () => {
     console.log('Socket.io - Socket disconnected');
+
+    // Variables
+    const user = users.removeUser(socket.id);
+
+    if (user) {
+      // Notify the chat room that a user left
+      io.to(user.room).emit('newMessage', generageMessage('Admin', `${user.name} has left.`));
+    }
   });
 });
 
