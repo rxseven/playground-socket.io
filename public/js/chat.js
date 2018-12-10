@@ -50,6 +50,20 @@ socket.on('disconnect', function() {
   console.log('Socket.io - Disconnected from the server');
 });
 
+// Update user list
+socket.on('updateUsers', function(users) {
+  // Variables
+  var $ol = $('<ol></ol>');
+
+  // Insert users to the list
+  users.forEach(function(user) {
+    $ol.append($('<li></li>').text(user));
+  });
+
+  // Update the list
+  $('#users').html($ol);
+});
+
 // Listen for new message
 socket.on('newMessage', function(message) {
   // Variables
